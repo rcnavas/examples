@@ -2,7 +2,7 @@ import { ThirdwebProvider, ChainId } from "@thirdweb-dev/react";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-
+  console.log("RELAY:", process.env.NEXT_PUBLIC_OPENZEPPELIN_URL);
   return (
     <ThirdwebProvider
       sdkOptions={{
@@ -12,7 +12,8 @@ function MyApp({ Component, pageProps }) {
           },
         },
       }}
-      desiredChainId={ChainId.Mumbai}
+      activeChain={ChainId.Polygon}
+      clientId="7bc896b9bb934667da21da7a4a16a3e0"
     >
       <Component {...pageProps} />
     </ThirdwebProvider>
