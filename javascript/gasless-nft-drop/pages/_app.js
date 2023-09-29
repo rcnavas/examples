@@ -1,4 +1,10 @@
-import { ThirdwebProvider, ChainId } from "@thirdweb-dev/react";
+import {
+  ThirdwebProvider,
+  ChainId,
+  metamaskWallet,
+  coinbaseWallet,
+  walletConnect,
+} from "@thirdweb-dev/react";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
@@ -13,6 +19,13 @@ function MyApp({ Component, pageProps }) {
         },
       }}
       activeChain={ChainId.Polygon}
+      supportedWallets={[
+        metamaskWallet({
+          projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_CLIENTID,
+        }),
+        coinbaseWallet(),
+        walletConnect(),
+      ]}
       clientId={process.env.NEXT_PUBLIC_THIRDWEB_CLIENTID}
     >
       <Component {...pageProps} />
