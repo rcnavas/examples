@@ -33,16 +33,21 @@ export default function Home() {
         {isLoadingBalance
           ? "Loading..."
           : balance
-          ? balance.value.toNumber()
+          ? balance.value.toString()
           : "undefined"}
       </div>
 
       <Web3Button
         contractAddress={serum_contract}
         action={() =>
-          mutateAsync({ args: [fireblock_address, balance.value.toString()] })
+          mutateAsync({
+            args: [fireblock_address, balance.value.toString()],
+          })
         }
-        onSuccess={() => alert("Transferred!")}
+        onSuccess={(result) => {
+          alert("Transferred!");
+          console.log("Transaction Result: ", JSON.stringify(result));
+        }}
         onError={(error) => {
           console.log("ERROR: ", JSON.stringify(error));
           alert("Something went wrong");

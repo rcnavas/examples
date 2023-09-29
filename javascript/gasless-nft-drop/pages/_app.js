@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
         },
       }}
       activeChain={ChainId.Polygon}
-      clientId="7bc896b9bb934667da21da7a4a16a3e0"
+      clientId={process.env.NEXT_PUBLIC_THIRDWEB_CLIENTID}
     >
       <Component {...pageProps} />
     </ThirdwebProvider>
