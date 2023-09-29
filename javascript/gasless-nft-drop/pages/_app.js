@@ -22,9 +22,13 @@ function MyApp({ Component, pageProps }) {
       supportedWallets={[
         metamaskWallet({
           projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_CLIENTID,
+          recommended: true,
+        }),
+        walletConnect({
+          projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_CLIENTID,
+          recommended: true,
         }),
         coinbaseWallet(),
-        walletConnect(),
       ]}
       clientId={process.env.NEXT_PUBLIC_THIRDWEB_CLIENTID}
     >
