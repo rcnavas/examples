@@ -51,7 +51,12 @@ export default function Home() {
           : "undefined"}
       </div>
       <div>
-        Allowance for {relay_contract}: {allowance.toNumber()}
+        Allowance for {relay_contract}:{" "}
+        {isLoadingAllowance
+          ? "Loading..."
+          : allowance
+          ? JSON.stringify(allowance)
+          : "undefined"}
       </div>
 
       <Web3Button
