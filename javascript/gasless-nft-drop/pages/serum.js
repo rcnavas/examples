@@ -51,7 +51,7 @@ export default function Home() {
           : "undefined"}
       </div>
       <div>
-        Allowance for {relay_contract}: {allowance}
+        Allowance for {relay_contract}: {allowance.toNumber()}
       </div>
 
       <Web3Button
