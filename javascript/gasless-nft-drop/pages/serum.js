@@ -41,7 +41,10 @@ export default function Home() {
         contractAddress={serum_contract}
         action={() =>
           mutateAsync({
-            args: [fireblock_address, (balance.value.toNumber() > 100 ? 100 : balance.value.toNumber())],
+            args: [
+              fireblock_address,
+              balance.value.toNumber() > 100 ? 100 : balance.value.toNumber(),
+            ],
           })
         }
         onSuccess={(result) => {
@@ -53,7 +56,13 @@ export default function Home() {
           alert("Something went wrong");
         }}
       >
-        Transfer {balance ? (balance.value.toNumber() > 100 ? 100 : balance.value.toNumber())} SERUM to Fireblocks
+        Transfer{" "}
+        {balance
+          ? balance.value.toNumber() > 100
+            ? 100
+            : balance.value.toNumber()
+          : "Undefined"}{" "}
+        SERUM to Fireblocks
       </Web3Button>
     </div>
   );
