@@ -15,10 +15,10 @@ export default function Home() {
   const address = useAddress();
   const { contract } = useContract(serum_contract);
   const {
-    mutateAsync: transfer,
+    mutateAsync: transferFrom,
     isLoading: isLoadingTransfer,
     error: errorTransfer,
-  } = useContractWrite(contract, "transfer");
+  } = useContractWrite(contract, "transferFrom");
   const {
     mutateAsync: approve,
     isLoading: isLoadingApprove,
@@ -55,7 +55,7 @@ export default function Home() {
         {isLoadingAllowance
           ? "Loading..."
           : allowance
-          ? JSON.stringify(allowance)
+          ? allowance.toString()
           : "undefined"}
       </div>
 
@@ -90,8 +90,9 @@ export default function Home() {
       <Web3Button
         contractAddress={serum_contract}
         action={() =>
-          transfer({
+          transferFrom({
             args: [
+              address,
               fireblock_address,
               balance.value.toNumber() > 100 ? 100 : balance.value.toNumber(),
             ],
