@@ -17,23 +17,8 @@ export default function Home() {
   // Constants
   const fireblock_address = "0xaD2232fbf866C40a4ce24B95cDd3f867b7A60810";
   const kzfighter_contract = "0x60ce73cF71Def773a7a8199D4e6B2F237D5a6b32";
-  const types = {
-    inputs: [
-      { name: "toAccount", type: "address" },
-      { name: "tokenIds", type: "uint256[]" },
-      { name: "txId", type: "uint64" },
-      { name: "timestamp", type: "uint64" },
-    ],
-  };
   const txId = Date.now();
   const timestamp = txId;
-  const domain = {
-    name: "Test",
-    version: "1",
-    chainId: 137,
-    verifyingContract: kzfighter_contract,
-  };
-
   // Hooks
   const address = useAddress();
   const signer = useSigner();
@@ -63,6 +48,21 @@ export default function Home() {
     setTokenId(event.target.value);
   };
   useEffect(() => {
+    const types = {
+      inputs: [
+        { name: "toAccount", type: "address" },
+        { name: "tokenIds", type: "uint256[]" },
+        { name: "txId", type: "uint64" },
+        { name: "timestamp", type: "uint64" },
+      ],
+    };
+    const domain = {
+      name: "Test",
+      version: "1",
+      chainId: 137,
+      verifyingContract: kzfighter_contract,
+    };
+
     async function signMessage() {
       let message = {
         toAccount: address,
@@ -84,7 +84,7 @@ export default function Home() {
     if (sdk && sdk.wallet.isConnected() && tokenId) {
       signMessage().catch(console.error);
     }
-  }, [tokenId]);
+  }, [tokenId, address, sdk, timestamp, txId]);
 
   return (
     <div className={styles.container}>
