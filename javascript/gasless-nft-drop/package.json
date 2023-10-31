@@ -10,16 +10,16 @@
     "postinstall": "npx --yes thirdweb@latest generate --key $THIRDWEB_KEY"
   },
   "dependencies": {
-    "@openzeppelin/defender-relay-client": "^1.48.0",
-    "@thirdweb-dev/react": "^3.16.4",
-    "@thirdweb-dev/sdk": "^3.10.66",
-    "ethers": "^5.7.2",
+    "@openzeppelin/defender-relay-client": "^1.50.0",
+    "@thirdweb-dev/react": "^4.0.10",
+    "@thirdweb-dev/sdk": "^4.0.9",
+    "ethers": "^6.8.0",
     "next": "13",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "eslint": "8.27.0",
-    "eslint-config-next": "13.0.3"
+    "eslint": "^8.52.0",
+    "eslint-config-next": "^14.0.1"
   }
 }
